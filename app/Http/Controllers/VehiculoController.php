@@ -66,7 +66,7 @@ class VehiculoController extends Controller
     public function edit($id)
     {
         $vehiculoEdit = App\Vehiculo::findOrFail($id);
-        return view('vehiculo.edit',compact('vehiculoEdit'));
+        return view('vehiculo.edit',compact('id','vehiculoEdit'));
     }
 
     /**
