@@ -1,21 +1,18 @@
 @extends('layouts.app')
-@section('title','Editar Usuario')
+@section('title','Editar Vehiculo')
 @section('content')
-<h3 class="text-center mb-3 pt-3">Editar el Usuario</h3>
-<form action="{{route('cliente.update',$clienteEdit->id)}}" method="POST">
+<h3 class="text-center mb-3 pt-3">Editar el Vehiculo</h3>
+<form action="{{route('vehiculo.update',$vehiculoEdit->id)}}" method="POST">
     @method('PUT')
     @csrf
     <div class="form-group">
-    <input type="text" name="nombre" id="name" value="{{$clienteEdit->nombre}}" class="form-control">
+    <input type="text" name="placa" id="placa" value="{{$vehiculoEdit->placa}}" class="form-control">
     </div>
     <div class="form-group">
-        <input type="text" name="telefono" id="telefono" value="{{$clienteEdit->telefono}}" class="form-control">
+        <input type="text" name="marca" id="marca" value="{{$vehiculoEdit->marca}}" class="form-control">
     </div>
     <div class="form-group">
-        <input type="text" name="correo" id="correo" value="{{$clienteEdit->correo}}" class="form-control">
-    </div>
-    <div class="form-group">
-        <input type="text" name="direccion" id="direccion" value="{{$clienteEdit->direccion}}" class="form-control">
+        <input type="text" name="color" id="color" value="{{$vehiculoEdit->color}}" class="form-control">
     </div>
     {{--<div class="form-group">
         <!--<input type="text" name="profesion_id" id="profesion_id" value="{{$usersEdit->profesiones_id}}" class="form-control">-->
@@ -30,7 +27,7 @@
             </div>
     </div>
     </div>--}}
-<button class="btn btn-success btn-block">Editar Usuario</button>
+<button class="btn btn-success btn-block">Editar Vehiculo</button>
 @if (session('update'))
         <div class="alert alert-success mt-3">
             {{session('update')}}

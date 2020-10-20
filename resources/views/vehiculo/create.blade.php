@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title','Crear Usuario')
+@section('title','Crear vehiculo')
 @section('content')
         <div class="row">
             <div class="col-9">
                 {{--Fila Formulario --}}
                 <div class="col-12">
-                    <h3 class="text-center mb-4">Agregar Clientes</h3>
-                <form action="{{route('cliente.store')}}" method="POST">
+                    <h3 class="text-center mb-4">Agregar Vehiculos</h3>
+                <form action="{{route('vehiculo.store')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Nombres">

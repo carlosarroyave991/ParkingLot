@@ -1,27 +1,25 @@
 @extends('layouts.app')
-@section('title','Crear Clientes')
+@section('title','Listar Vehiculos')
 @section('content')
 <div class="col-12">
-    <h3 class="text-center mb-3 pt-3">Listado de Clientes</h3>
-    <a href="{{route('cliente.create')}}" class="btn btn-success">Crear Cliente Nuevo</a>
+    <h3 class="text-center mb-3 pt-3">Listado de Vehiculos</h3>
+    <!--<a href="{{route('vehiculo.create')}}" class="btn btn-success">Crear Cliente Nuevo</a>-->
     <table class="table table-responsive table-striped">
         <tr>
             <th>Id</th>
-            <th>Cedula</th>
-            <th>Nombre Completo</th>
-            <th>Correo</th>
-            <th>Telefono</th>
+            <th>Placa</th>
+            <th>Marca</th>
+            <th>Color</th>
             <th>Ver</th>
             <th>Editar</th>
             <th>Eliminar</th>
         </tr>
-        @foreach ($clientes as $item)
+        @foreach ($vehiculos as $item)
             <tr>
             <td>{{$item->id}}</td>
-            <td>{{$item->cedula}}</td>
-            <td>{{$item->nombres}} {{$item->apellidos}}</td>
-            <td>{{$item->correo}}</td>
-            <td>{{$item->telefono}}</td>
+            <td>{{$item->placa}}</td>
+            <td>{{$item->marca}}</td>
+            <td>{{$item->color}}</td>
             {{--<td>
                 @foreach($profesiones as $profesion)
                     @if ($item->profesion_id == $profesion->id)
@@ -29,10 +27,10 @@
                     @endif
                 @endforeach
         </td>--}}
-            <td><a href="{{route('cliente.show',$item->id)}}" class="btn btn-info">Ver</a></td>
-            <td><a href="{{route('cliente.edit',$item->id)}}" class="btn btn-warning">Editar</a></td>
+            <td><a href="{{route('vehiculo.show',$item->id)}}" class="btn btn-info">Ver</a></td>
+            <td><a href="{{route('vehiculo.edit',$item->id)}}" class="btn btn-warning">Editar</a></td>
             <td>
-            <form action="{{route('cliente.destroy',$item->id)}}" method="POST" class="d-inline">
+            <form action="{{route('vehiculo.destroy',$item->id)}}" method="POST" class="d-inline">
                 @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-danger">Eleminar</button>
@@ -41,7 +39,7 @@
             </tr>
         @endforeach
     </table>
-    {{$clientes->links()}}
+    {{$vehiculos ?? ''->links()}}
 </div>
     @if (session('delete'))
             <div class="alert alert-warning mt-3">

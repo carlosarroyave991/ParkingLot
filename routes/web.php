@@ -26,4 +26,5 @@ Route::group(['middleware'=>'auth'], function() {
     // Ruta con todas las operacion CRUD
     //Rutas del controlador Cliente
     Route::resource('/cliente','ClienteController');
+    Route::resource('/vehiculo','VehiculoController');
 });

@@ -14,7 +14,7 @@
                 Detalles
             </div>
             <div class="card-body">
-                <h5 class="card-title">ID del usuario: {{ $clienteShow->id }}</h5>
+                <h5 class="card-title">ID del cliente: {{ $clienteShow->id }}</h5>
                 <div class="card-text">
                     <p><strong>Cedula</strong>: {{ $clienteShow->cedula }}</p>
                     <p><strong>Correo electrónico</strong>: {{ $clienteShow->correo }}</p>
