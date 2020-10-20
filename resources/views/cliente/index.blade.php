@@ -32,10 +32,10 @@
                 @endforeach
         </td>--}}
             <td>{{$item->password}}</td>
-            <td><a href="{{route('show',$item->id)}}" class="btn btn-info">Ver</a></td>
-            <td><a href="{{route('edit',$item->id)}}" class="btn btn-warning">Editar</a></td>
+            <td><a href="{{route('cliente.show',$item->id)}}" class="btn btn-info">Ver</a></td>
+            <td><a href="{{route('cliente.edit',$item->id)}}" class="btn btn-warning">Editar</a></td>
             <td>
-            <form action="{{route('destroy',$item->id)}}" method="POST" class="d-inline">
+            <form action="{{route('cliente.destroy',$item->id)}}" method="POST" class="d-inline">
                 @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-danger">Eleminar</button>

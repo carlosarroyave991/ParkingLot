@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    <a href="{{route('cliente.index')}}">Clientes</a>
                 </div>
             </div>
         </div>

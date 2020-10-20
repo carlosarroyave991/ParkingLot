@@ -21,17 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-//RUTAS CLIENTE
-Route::get('cliente', function(){
-    return view('cliente.index');
+// Rutas con autentificacion requerida para cualquier acción
+Route::group(['middleware'=>'auth'], function() {
+    // Ruta con todas las operacion CRUD
+    Route::resource('/cliente','ClienteController');
 });
-Route::get('cliente/create', function(){
-    return view('cliente.create');
-});
-Route::post('cliente/store',function(){
-    return view('cliente.store');
-});
-Route::get('cliente/edit/{id}','ClienteController@edit')->name('store');
-Route::put('cliente/update/{id}','ClienteController@update')->name('update');
-Route::delete('cliente/destroy/{id}','ClienteController@destroy')->name('destroy');
-
