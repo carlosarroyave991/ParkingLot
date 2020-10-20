@@ -8,8 +8,7 @@
         <tr>
             <th>Id</th>
             <th>Cedula</th>
-            <th>Nombres</th>
-            <th>Apellidos</th>
+            <th>Nombre Completo</th>
             <th>Correo</th>
             <th>Telefono</th>
             <th>Ver</th>
@@ -20,8 +19,7 @@
             <tr>
             <td>{{$item->id}}</td>
             <td>{{$item->cedula}}</td>
-            <td>{{$item->nombres}}</td>
-            <td>{{$item->apellidos}}</td>
+            <td>{{$item->nombres}} {{$item->apellidos}}</td>
             <td>{{$item->correo}}</td>
             <td>{{$item->telefono}}</td>
             {{--<td>

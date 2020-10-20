@@ -24,5 +24,6 @@ Auth::routes();
 // Rutas con autentificacion requerida para cualquier acción
 Route::group(['middleware'=>'auth'], function() {
     // Ruta con todas las operacion CRUD
+    //Rutas del controlador Cliente
     Route::resource('/cliente','ClienteController');
 });

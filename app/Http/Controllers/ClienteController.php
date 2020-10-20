@@ -82,7 +82,7 @@ class ClienteController extends Controller
         //$profesiones = Profesion::orderBy('title', 'asc')->get();
         //$prof = App\Profesion::findOrFail($id);
         $clienteEdit = App\Cliente::findOrFail($id);
-        return view('edit',compact('clienteEdit'));
+        return view('cliente.edit',compact('clienteEdit'));
     }
 
     /**
@@ -115,6 +115,6 @@ class ClienteController extends Controller
     {
         $clienteDelete=App\Cliente::findOrFail($id);
         $clienteDelete->delete();
-        return back()->with('destroy','El cliente ha sido eliminado correctamente!');
+        return back()->with('cliente.destroy','El cliente ha sido eliminado correctamente!');
     }
 }

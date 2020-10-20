@@ -1,10 +1,10 @@
-@extends('layout')
+@extends('layouts.app')
 @section('title','Mostrar Usuario')
 @section('content')
 <div class="d-flex justify-content-between align-items-end mb-3">
-    <h1 class="pb-1">{{ $usersShow->name }}</h1>
+<h1 class="pb-1">{{ $clienteShow->nombres }} {{$clienteShow->apellidos}}</h1>
 
-    <p><a href="{{ route('index') }}" class="btn btn-outline-dark btn-sm">Regresar al listado</a></p>
+    <p><a href="{{ route('cliente.index') }}" class="btn btn-outline-dark btn-sm">Regresar al listado</a></p>
 </div>
 
 <div class="row">
@@ -14,11 +14,14 @@
                 Detalles
             </div>
             <div class="card-body">
-                <h5 class="card-title">ID del usuario: {{ $usersShow->id }}</h5>
+                <h5 class="card-title">ID del usuario: {{ $clienteShow->id }}</h5>
                 <div class="card-text">
-                    <p><strong>Correo electrónico</strong>: {{ $usersShow->email }}</p>
-                <p><strong>Contraseña</strong>:{{$usersShow->password}}</p>
-                    <p><strong>Fecha de registro</strong>: {{ $usersShow->created_at }}</p>
+                    <p><strong>Cedula</strong>: {{ $clienteShow->cedula }}</p>
+                    <p><strong>Correo electrónico</strong>: {{ $clienteShow->correo }}</p>
+                    <p><strong>Telefono</strong>:{{$clienteShow->telefono}}</p>
+                    <p><strong>Foto</strong>: {{ $clienteShow->foto }}</p>
+                    <p><strong>Direccion</strong>: {{ $clienteShow->direccion }}</p>
+                    <p><strong>Fecha de registro</strong>: {{ $clienteShow->created_at }}</p>
                 </div>
             </div>
         </div>

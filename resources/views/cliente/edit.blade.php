@@ -2,17 +2,20 @@
 @section('title','Editar Usuario')
 @section('content')
 <h3 class="text-center mb-3 pt-3">Editar el Usuario</h3>
-<form action="{{route('update',$usersEdit->id)}}" method="POST">
+<form action="{{route('clienteupdate',$clienteEdit->id)}}" method="POST">
     @method('PUT')
     @csrf
     <div class="form-group">
-    <input type="text" name="name" id="name" value="{{$usersEdit->name}}" class="form-control">
+    <input type="text" name="nombre" id="name" value="{{$clienteEdit->nombre}}" class="form-control">
     </div>
     <div class="form-group">
-        <input type="text" name="email" id="email" value="{{$usersEdit->email}}" class="form-control">
+        <input type="text" name="telefono" id="telefono" value="{{$clienteEdit->telefono}}" class="form-control">
     </div>
     <div class="form-group">
-        <input type="password" name="password" id="password" value="{{$usersEdit->password}}" class="form-control">
+        <input type="text" name="correo" id="correo" value="{{$clienteEdit->correo}}" class="form-control">
+    </div>
+    <div class="form-group">
+        <input type="text" name="direccion" id="direccion" value="{{$clienteEdit->direccion}}" class="form-control">
     </div>
     {{--<div class="form-group">
         <!--<input type="text" name="profesion_id" id="profesion_id" value="{{$usersEdit->profesiones_id}}" class="form-control">-->
