@@ -18,7 +18,4 @@ class Cliente extends Model
         'direccion'
     ];
 
-    public function entrada_salida(){
-        return $this->hasMany('entrada_salida');
-    }
 }
