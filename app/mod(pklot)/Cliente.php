@@ -18,8 +18,8 @@ class Cliente extends Model
         'direccion',
     ];
 
-    public function vehiculo(){
-        return $this->hasMany(vehiculo::class);
+    public function vehiculo_has_users(){
+        $this->hasMany('cliente_id','foreign_key');
     }
 
     /**public function vehiculo(){

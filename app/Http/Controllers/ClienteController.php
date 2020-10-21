@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App;
-use App\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Http\DB;
+
+use App\Cliente;
+use App\Vehiculo;
 
 class ClienteController extends Controller
 {
@@ -15,8 +17,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes= App\Cliente::paginate(5);
-        return view('cliente.index', compact('clientes'));
+        $vehiculos=Vehiculo::all();
+        $clientes= Cliente::paginate(5);
+        return view('cliente.index', compact('clientes','vehiculos'));
     }
 
     /**
@@ -26,7 +29,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('cliente.create');
+        $clientes=Cliente::all();
+        $vehiculos=Vehiculo::all();
+        return view('cliente.create',compact('vehiculos','clientes'));
     }
 
     /**
@@ -37,6 +42,8 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        /// valide los datos cuando la peticion llega
+
         $crearCliente=new Cliente;
         $crearCliente->cedula=$request->cedula;
         $crearCliente->nombres=$request->nombres;
@@ -56,6 +63,14 @@ class ClienteController extends Controller
         }
         $crearCliente->direccion=$request->direccion;
         $crearCliente->save();
+
+        $crearVehiculo = new Vehiculo;
+        $crearVehiculo->placa = $request->placa;
+        $crearVehiculo->marca = $request->marca;
+        $crearVehiculo->color = $request->color;
+        $crearVehiculo->cliente_id=$request->input('cliente');
+        $crearVehiculo->save();
+
         return back()->with('crear','El usuario se ha creado correctamente!');
     }
 
@@ -67,7 +82,7 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        $clienteShow = App\Cliente::findOrFail($id);
+        $clienteShow = Cliente::findOrFail($id);
         return view('cliente.show', compact('id','clienteShow'));
     }
 
@@ -81,7 +96,7 @@ class ClienteController extends Controller
     {
         //$profesiones = Profesion::orderBy('title', 'asc')->get();
         //$prof = App\Profesion::findOrFail($id);
-        $clienteEdit = App\Cliente::findOrFail($id);
+        $clienteEdit = Cliente::findOrFail($id);
         return view('cliente.edit',compact('clienteEdit'));
     }
 
@@ -94,7 +109,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $clienteUpdate = App\Cliente::findOrFail($id);
+        $clienteUpdate = Cliente::findOrFail($id);
         $clienteUpdate->name=$request->name;
         $clienteUpdate->email=$request->email;
 
@@ -113,7 +128,7 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        $clienteDelete=App\Cliente::findOrFail($id);
+        $clienteDelete=Cliente::findOrFail($id);
         $clienteDelete->delete();
         return back()->with('cliente.destroy','El cliente ha sido eliminado correctamente!');
     }

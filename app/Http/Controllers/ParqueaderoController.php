@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App;
+
 use App\Parqueadero;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,7 @@ class ParqueaderoController extends Controller
      */
     public function index()
     {
-        $parqueaderos=App\Parqueadero::paginate(5);
+        $parqueaderos=Parqueadero::paginate(5);
         return view('parqueadero.index',compact('parqueaderos'));
     }
 
@@ -54,7 +54,7 @@ class ParqueaderoController extends Controller
      */
     public function show($id)
     {
-        $parkShow= App\Parqueadero::findOrFail($id);
+        $parkShow= Parqueadero::findOrFail($id);
         return view('parqueadero.show', compact('id','parkShow'));
     }
 
@@ -66,7 +66,7 @@ class ParqueaderoController extends Controller
      */
     public function edit($id)
     {
-        $parkEdit = App\Parqueadero::findOrFail($id);
+        $parkEdit = Parqueadero::findOrFail($id);
         return view('parqueadero.edit',compact('id','parkEdit'));
     }
 
@@ -79,7 +79,7 @@ class ParqueaderoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $parkUpdate=App\Parqueadero::findOrFail($id);
+        $parkUpdate=Parqueadero::findOrFail($id);
         $parkUpdate->nombre=$request->nombre;
         $parkUpdate->capacidad_vehiculos=$request->name('cap_vehi');
         $parkUpdate->cupos_disponibles=$request->name('cupos');
@@ -96,7 +96,7 @@ class ParqueaderoController extends Controller
      */
     public function destroy($id)
     {
-        $parkDelete=App\Parqueadero::findOrFail($id);
+        $parkDelete=Parqueadero::findOrFail($id);
         $parkDelete->delete();
         return back()->with('parqueadero.destroy','La informacion del parqueadero se ha sido eliminado correctamente!');
     }

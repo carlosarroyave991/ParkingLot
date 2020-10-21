@@ -8,10 +8,10 @@ class Vehiculo extends Model
 {
     protected $table = 'vehiculo';
     protected $fillable = [
-        'placa', 'marca','color','cliente_id',
+        'placa', 'marca','color',
     ];
 
     public function cliente(){
-        $this->belognTo(Cliente::class);
+        $this->hasMany();
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVehiculoTable extends Migration
+class CreateParqueaderoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateVehiculoTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehiculo', function (Blueprint $table) {
+        Schema::create('parqueadero', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('placa',45)->unique();
-            $table->string('marca',45)->nullable();
-            $table->string('color',88)->nullable();
-            $table->unsignedBigInteger('cliente_id');
+            $table->string('nombre');
+            $table->integer('capacidad_vehiculos');
+            $table->integer('cupos_disponibles');
+            $table->string('direccion');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateVehiculoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehiculo');
+        Schema::dropIfExists('parqueadero');
     }
 }

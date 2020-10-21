@@ -15,7 +15,7 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        $vehiculos=App\Vehiculo::paginate(5);
+        $vehiculos=Vehiculo::paginate(5);
         return view('vehiculo.index',compact('vehiculos'));
     }
 
@@ -53,7 +53,7 @@ class VehiculoController extends Controller
      */
     public function show($id)
     {
-        $vehiculoShow = App\Vehiculo::findOrFail($id);
+        $vehiculoShow = Vehiculo::findOrFail($id);
         return view('vehiculo.show', compact('id','vehiculoShow'));
     }
 
@@ -65,7 +65,7 @@ class VehiculoController extends Controller
      */
     public function edit($id)
     {
-        $vehiculoEdit = App\Vehiculo::findOrFail($id);
+        $vehiculoEdit = Vehiculo::findOrFail($id);
         return view('vehiculo.edit',compact('id','vehiculoEdit'));
     }
 
@@ -78,7 +78,7 @@ class VehiculoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $vehiculoUpdate = App\Vehiculo::findOrFail($id);
+        $vehiculoUpdate = Vehiculo::findOrFail($id);
         $vehiculoUpdate->placa=$request->placa;
         $vehiculoUpdate->marca=$request->marca;
         $vehiculoUpdate->color=$request->color;
@@ -97,7 +97,7 @@ class VehiculoController extends Controller
      */
     public function destroy($id)
     {
-        $vehiculoDelete=App\Vehiculo::findOrFail($id);
+        $vehiculoDelete=Vehiculo::findOrFail($id);
         $vehiculoDelete->delete();
         return back()->with('vehiculo.destroy','El vehiculo ha sido eliminado correctamente!');
     }
